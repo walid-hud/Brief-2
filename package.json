@@ -1,0 +1,20 @@
+{
+  "name": "brief-2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "lit": "^3.3.1",
+    "@lit-labs/motion": "^1.1.0",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "vite": "^7.2.4"
+  }
+}
