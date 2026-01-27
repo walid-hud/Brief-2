@@ -1,8 +1,8 @@
 import { LitElement,  } from "lit";
-class TailwindElement extends LitElement {
+class XElement extends LitElement {
   createRenderRoot() {
     return this;
   }
 }
 
-export default TailwindElement;
+export default XElement;

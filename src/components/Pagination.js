@@ -1,10 +1,10 @@
 import { html } from "lit";
-import TailwindElement from "../utils/TailwindElement";
+import XElement from "../utils/XElement";
 import { ProxyStoreController } from "../controllers/store.controller";
 import { store } from "../state/store";
 import {define} from "../lib"
 
-class Pagination extends TailwindElement {
+class Pagination extends XElement {
   store = new ProxyStoreController(this, store);
 
   get total_pages() {

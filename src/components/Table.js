@@ -1,11 +1,11 @@
 import { html } from "lit";
-import TailwindElement from "../utils/TailwindElement";
+import XElement from "../utils/XElement";
 import { store } from "../state/store";
 import { ProxyStoreController } from "../controllers/store.controller";
 import { toast } from "../utils";
 import { delete_data_row } from "../services/localstorage";
 import { define } from "../lib";
-export default class Table extends TailwindElement {
+export default class Table extends XElement {
   store = new ProxyStoreController(this , store)
 
   get paginated_data(){
@@ -70,7 +70,7 @@ export default class Table extends TailwindElement {
                 <div class="md:py-2 md:px-4">${row.tel}</div>
                 
                 <div class="md:hidden font-semibold">Email</div>
-                <div class="md:py-2 md:px-4  wrap-break-word min-w-full">${row.email}</div>
+                <div class="md:py-2 md:px-4   min-w-full">${row.email}</div>
 
                 <div class="md:hidden font-semibold">Action</div>
                 <div class="flex items-center justify-center">

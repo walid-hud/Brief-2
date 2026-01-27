@@ -1,8 +1,8 @@
 import { html } from "lit";
-import TailwindElement from "../utils/TailwindElement";
+import XElement from "../utils/XElement";
 import { define } from "../lib";
 
-export default class ToastContainer extends TailwindElement {
+export default class ToastContainer extends XElement {
   static properties = {
     toasts: { state: true },
   };

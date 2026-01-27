@@ -221,3 +221,8 @@ input:user-valid{
     transform: translateX(0);
   }
 }
+
+/* what even is this*/
+input[type="search"]::-webkit-search-cancel-button{
+  display: none;
+}

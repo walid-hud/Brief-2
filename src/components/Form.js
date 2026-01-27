@@ -1,12 +1,12 @@
 import { html } from "lit";
-import TailwindElement from "../utils/TailwindElement";
+import XElement from "../utils/XElement";
 import { animate } from "@lit-labs/motion";
 import { store } from "../state/store";
 import { save_data_row } from "../services/localstorage";
 import { toast } from "../utils";
 import { define } from "../lib";
 
-class Form extends TailwindElement {
+class Form extends XElement {
   // Translated from `@state() is_opened = false` (TypeScript + decorator) to
   // a plain JS Lit reactive property:
   static properties = {
