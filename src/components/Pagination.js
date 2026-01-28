@@ -1,5 +1,5 @@
 import { html } from "lit";
-import XElement from "../utils/XElement";
+import XElement from "../lib/XElement";
 import { ProxyStoreController } from "../controllers/store.controller";
 import { store } from "../state/store";
 import {define} from "../lib"

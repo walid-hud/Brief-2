@@ -1,32 +1,54 @@
 import { html } from "lit";
-import XElement from "../utils/XElement";
+import XElement from "../lib/XElement";
 import { store } from "../state/store";
 import { define } from "../lib";
-
+import {debounce, query_rows} from "../utils/index"
+const old_rows =    [...store.state.rows] 
 class Search extends XElement {
+  
+  _on_change(ev){
+    let query = ev.target.value.trim().toLowerCase()
+    if(!query){
+      store.state.rows = old_rows
+      return
+    }
+    const {rows , matches} =  query_rows(query) 
+    store.state.rows = rows 
+  }
+  _on_blur(){
+    store.state.rows = old_rows
+  }
+  disconnectedCallback(){
+    this.input.removeEventListener("input" , this._on_change)
+  }
   render() {
     return html`
-      <div class=" *:transition-all *:duration-300 *:ease-in-out relative overflow-clip border-2 border-muted-foreground/50 rounded-(--radius)   ">
+      <div class=" *:transition-all *:duration-300 *:ease-in-out relative 
+       border border-muted-foreground rounded-(--radius) overflow-clip shadow-md  
+         "> 
         <input
+        @input=${debounce(this._on_change , 800)}
+        @blur=${this._on_blur}
           type="search"
           name="search"
           placeholder="search..."
+          spellcheck="false"
           class="
-            bg-input px-2 py-2  w-xl text-lg 
-            focus:outline-primary   outline-0
+            bg-input px-2 py-2  w-xl text-lg  
+            focus:outline-0 text-foreground outline-0 border-0  
+            rounded-(--radius) 
 
             "
         />
         <button
         class="
-        absolute right-0 top-1/2 -translate-y-1/2 border-l-2 border-muted-foreground/50 h-full px-3            
-        flex items-center **:stroke-primary  cursor-pointer  hover:bg-accent-foreground hover:**:stroke-muted
-        
+        absolute right-0 top-1/2 -translate-y-1/2 border-l border-muted-foreground h-full px-3            
+        flex items-center **:stroke-primary  cursor-pointer 
+        rounded-r-(--radius) 
         "
         
         >
           <svg
-            class="*:transition-all *:duration-300 *:ease-in-out"
             width="20"
             height="20"
             viewBox="0 0 20 20"

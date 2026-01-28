@@ -1,5 +1,5 @@
 import { html } from "lit";
-import XElement from "../utils/XElement";
+import XElement from "../lib/XElement";
 import { define } from "../lib";
 
 export default class ToastContainer extends XElement {

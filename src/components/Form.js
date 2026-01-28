@@ -1,5 +1,5 @@
 import { html } from "lit";
-import XElement from "../utils/XElement";
+import XElement from "../lib/XElement";
 import { animate } from "@lit-labs/motion";
 import { store } from "../state/store";
 import { save_data_row } from "../services/localstorage";
@@ -7,8 +7,6 @@ import { toast } from "../utils";
 import { define } from "../lib";
 
 class Form extends XElement {
-  // Translated from `@state() is_opened = false` (TypeScript + decorator) to
-  // a plain JS Lit reactive property:
   static properties = {
     is_opened: { state: true },
   };
@@ -18,7 +16,6 @@ class Form extends XElement {
     this.is_opened = false;
   }
 
-  // Translated from `@query("form") form!: HTMLFormElement;` to a plain JS getter.
   get form() {
     return this.renderRoot?.querySelector("form");
   }
@@ -29,12 +26,11 @@ class Form extends XElement {
   _close() {
     this.is_opened = false;
     this.form.blur();
+    this.form.querySelectorAll("input").forEach(e=>e.blur())
   }
   _on_escape(ev) {
     if (ev.key === "Escape") {
       this._close();
-      this.form.querySelectorAll("input").forEach(e=>e.blur())
-      this.form.blur()
     }
   }
 

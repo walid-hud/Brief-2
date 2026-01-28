@@ -1,10 +1,11 @@
+import { fuse } from "../state/store";
+
+
 /**
- * Tiny DOM helper (kept as JS; no TS generics).
  * @param {string} selector
  * @returns {HTMLElement|null}
  */
-const $ = (selector) => document.querySelector(selector);
-
+export const $ = (selector) => document.querySelector(selector);
 /**
  * @typedef {Object} RowData
  * @property {number} id
@@ -17,15 +18,41 @@ const $ = (selector) => document.querySelector(selector);
  */
 
 /**
- * Send a toast message via `<x-toast-container>`.
  * @param {string} message
  * @param {number} duration
  * @param {"success"|"error"} variant
  */
-function toast(message, duration, variant) {
+export function toast(message, duration, variant) {
   const container = /** @type {any} */ ($("x-toast-container"));
   if (!container || typeof container.add_toast !== "function") return;
   container.add_toast(message, duration, variant);
 }
 
-export { $, toast };
+/** I hate ts 💔
+ * @param {Function} callback
+ * @param {number} delay
+ */
+export function debounce(callback , delay){
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => callback.apply(this, args), delay);
+  };
+}
+
+/**
+ * @param {string} query
+*/
+export function query_rows(query){
+  const matches =  fuse.search(query)
+  let data = {
+    rows:[],
+    matches:[]
+  }
+  matches.forEach((m)=>{
+    data.rows.push(m.item)
+    data.matches.push(m.matches)
+  })
+  return data
+}
+

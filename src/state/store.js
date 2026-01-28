@@ -1,3 +1,4 @@
+import Fuse from "fuse.js";
 import { get_data_rows } from "../services/localstorage";
 
 function createReactiveStore(initial) {
@@ -130,12 +131,21 @@ const example_rows = [
 ];
 
 const initial = {
-  rows: [
-    ...get_data_rows(),
-     ...example_rows  
-  ],
+  rows: [...get_data_rows(), ...example_rows],
   current_page: 1,
   rows_per_page: 5,
 };
 const store = createReactiveStore(initial);
-export { store };
+
+const fuse_options  = {
+    keys: ["fn" , "ln" , "email" , "tel" , "reason" , "date"],
+    includeMatches: true,
+    threshold:0.5,
+
+  }
+let fuse = new Fuse(store.state.rows , fuse_options);
+
+store.subscribe(() => {
+  fuse.setCollection(store.state.rows)
+});
+export { store , fuse};
