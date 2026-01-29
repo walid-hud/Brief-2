@@ -91,7 +91,7 @@ class Form extends XElement {
     return html`
       <button
         class="
-      flex gap-x-2 items-center text-sm lg:text-lg font-medium bg-input  rounded-(--radius) px-2 py-2
+      flex gap-x-2 items-center  text-nowrap lg:text-lg font-medium bg-input  rounded-(--radius) px-4 py-2
       cursor-pointer hover:bg-input/60 transition-all duration-300 ease-in-out
        text-foreground active:scale-105 disabled:opacity-60 disabled:pointer-events-none pointer-events-auto
         border border-muted-foreground shadow-md 
@@ -99,7 +99,7 @@ class Form extends XElement {
         .disabled=${this.is_opened}
         @click=${this._toggle}
       >
-        <span>ajouter une demande </span>
+        <span>ajouter</span>
         <span>
           <svg
             class="mt-1"
@@ -219,7 +219,7 @@ class Form extends XElement {
                 class="
                       flex gap-x-2 items-center text-sm lg:text-lg font-medium bg-input  rounded-(--radius) px-2 py-1
                       cursor-pointer hover:bg-primary transition-all duration-300 ease-in-out
-                      text-foreground hover:text-accent active:scale-105 disabled:opacity-60 disabled:pointer-events-none pointer-events-auto
+                      text-foreground hover:text-accent active:scale-105 disabled:opacity-60 
                       border border-muted-foreground shadow-sm justify-center group
                        "
               >
@@ -250,7 +250,7 @@ class Form extends XElement {
                 class="
                       flex gap-x-2 items-center text-sm lg:text-lg font-medium bg-input  rounded-(--radius) px-2 py-1
                       cursor-pointer hover:bg-destructive transition-all duration-300 ease-in-out
-                      text-foreground hover:text-accent active:scale-105 disabled:opacity-60 disabled:pointer-events-none pointer-events-auto
+                      text-foreground hover:text-accent active:scale-105 disabled:opacity-60 
                       border border-muted-foreground shadow-sm justify-center group
                        "
               >

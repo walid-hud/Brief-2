@@ -141,7 +141,6 @@ const fuse_options  = {
     keys: ["fn" , "ln" , "email" , "tel" , "reason" , "date"],
     includeMatches: true,
     threshold:0.5,
-
   }
 let fuse = new Fuse(store.state.rows , fuse_options);
 

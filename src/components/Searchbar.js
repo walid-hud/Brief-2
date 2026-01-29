@@ -12,37 +12,35 @@ class Search extends XElement {
       store.state.rows = old_rows
       return
     }
+    console.log("query changed : "  , query)
     const {rows , matches} =  query_rows(query) 
     store.state.rows = rows 
   }
-  _on_blur(){
-    store.state.rows = old_rows
-  }
+  
   disconnectedCallback(){
     this.input.removeEventListener("input" , this._on_change)
   }
   render() {
     return html`
       <div class=" *:transition-all *:duration-300 *:ease-in-out relative 
-       border border-muted-foreground rounded-(--radius) overflow-clip shadow-md  
+       border border-muted-foreground rounded-(--radius) overflow-clip shadow-md
+        lg:w-lg md:w-md
          "> 
         <input
-        @input=${debounce(this._on_change , 800)}
-        @blur=${this._on_blur}
+        @keyup=${debounce(this._on_change , 300)}
           type="search"
           name="search"
           placeholder="search..."
           spellcheck="false"
           class="
-            bg-input px-2 py-2  w-xl text-lg  
+            bg-input px-2 py-2  w-full text-lg  
             focus:outline-0 text-foreground outline-0 border-0  
-            rounded-(--radius) 
-
+            rounded-(--radius)
             "
         />
         <button
         class="
-        absolute right-0 top-1/2 -translate-y-1/2 border-l border-muted-foreground h-full px-3            
+        absolute right-0 top-1/2 -translate-y-1/2 h-full px-3            
         flex items-center **:stroke-primary  cursor-pointer 
         rounded-r-(--radius) 
         "
