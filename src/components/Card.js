@@ -1,7 +1,6 @@
 import { html } from "lit";
 import XElement from "../lib/XElement";
 import { define } from "../lib/index";
-import { animate } from "@lit-labs/motion";
 
 class Card extends XElement {
   static properties = {
