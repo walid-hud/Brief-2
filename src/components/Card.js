@@ -15,6 +15,7 @@ class Card extends XElement {
     open:{state:true}
   };
   delete_row(id) {
+    this.open = false
     this.dispatchEvent(
       new CustomEvent("delete_row", {
         detail: { id },
@@ -22,7 +23,6 @@ class Card extends XElement {
         composed: true,
       }),
     );
-    this.open = false
   }
   constructor(){
     super()
@@ -46,7 +46,7 @@ class Card extends XElement {
           }}
           class="border-border border bg-primary-foreground size-12 flex items-center  justify-center rounded-(--radius)">
             <svg
-            class=${this.open ? "rotate-0" : "rotate-180"}
+            class="transition-transform duration-300 ${this.open ? "rotate-0" : "rotate-180"}"
             width="16"
             height="9"
             viewBox="0 0 16 9"
