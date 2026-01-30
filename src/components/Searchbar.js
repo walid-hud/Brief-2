@@ -5,14 +5,12 @@ import { define } from "../lib";
 import {debounce, query_rows} from "../utils/index"
 const old_rows =    [...store.state.rows] 
 class Search extends XElement {
-  
   _on_change(ev){
     let query = ev.target.value.trim().toLowerCase()
     if(!query){
       store.state.rows = old_rows
       return
     }
-    console.log("query changed : "  , query)
     const {rows , matches} =  query_rows(query) 
     store.state.rows = rows 
   }

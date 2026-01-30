@@ -195,8 +195,10 @@ class Form extends XElement {
                 required
                 type="tel"
                 inputmode="tel"
+                maxlength="10"
+                minlength="10"
                 id="tel"
-                placeholder="XX XX XX XX XX"
+                placeholder="XXXXXXXXXX"
               />
             </div>
 

@@ -14,7 +14,7 @@ class App extends XElement {
       <main
         class="min-h-screen px-4 py-2 bg-linear-180 from-primary/20  via-muted-foreground/20  to-secondary "
       >
-        <nav class=" flex justify-between items-center md:mb-4 ">
+        <nav class=" flex justify-between items-center md:mb-4  ">
           <div>
             <a href="/" class="text-3xl font-bold text-primary font-serif">
               HealthCare

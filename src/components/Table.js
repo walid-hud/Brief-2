@@ -30,8 +30,14 @@ export default class Table extends XElement {
   render() {
     return html`
       <section id="requests">
+        <div class="px-2 py-2 text-muted-foreground">
+          <span class="font-semibold">${this.paginated_data.length}</span>
+          <span>out of</span>
+          <span class="font-semibold text-accent-foreground">${store.state.rows.length} </span>
+          <span>items</span>
+        </div>
         <div
-          class="bg-card   ease-in-out rounded-(--radius) border border-border p-4"
+        class="bg-card ease-in-out rounded-(--radius) border border-border p-4"
         >
           <div
             class="hidden md:grid grid-cols-7 bg-accent text-sm font-medium *:py-3 *:px-4 rounded-(--radius)"

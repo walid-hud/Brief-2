@@ -131,7 +131,7 @@ const example_rows = [
 ];
 
 const initial = {
-  rows: [...get_data_rows(), ...example_rows],
+  rows: [...get_data_rows(), ...example_rows ],
   current_page: 1,
   rows_per_page: 5,
 };
