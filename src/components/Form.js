@@ -1,14 +1,14 @@
-import { html } from "lit";
+import {html} from "lit";
 import XElement from "../lib/XElement";
-import { animate } from "@lit-labs/motion";
-import { store } from "../state/store";
-import { save_data_row } from "../services/localstorage";
-import { toast } from "../utils";
-import { define } from "../lib";
+import {animate} from "@lit-labs/motion";
+import {store} from "../state/store";
+import {save_data_row} from "../services/localstorage";
+import {toast} from "../utils";
+import {define} from "../lib";
 
 class Form extends XElement {
   static properties = {
-    is_opened: { state: true },
+    is_opened: {state: true},
   };
 
   constructor() {
@@ -26,7 +26,7 @@ class Form extends XElement {
   _close() {
     this.is_opened = false;
     this.form.blur();
-    this.form.querySelectorAll("input").forEach(e=>e.blur())
+    this.form.querySelectorAll("input").forEach((e) => e.blur());
   }
   _on_escape(ev) {
     if (ev.key === "Escape") {
@@ -36,28 +36,28 @@ class Form extends XElement {
 
   _on_submit(ev) {
     ev.preventDefault();
-    const data  = {
+    const data = {
       id: Date.now(),
-      date: (this.form.querySelector("#date")  ).value,
-      fn: (this.form.querySelector("#fn")  ).value,
-      ln: (this.form.querySelector("#ln")  ).value,
-      email: (this.form.querySelector("#email")  ).value,
-      tel: (this.form.querySelector("#tel")  ).value,
-      reason: (this.form.querySelector("#reason")  ).value,
-    }
+      date: this.form.querySelector("#date").value,
+      fn: this.form.querySelector("#fn").value,
+      ln: this.form.querySelector("#ln").value,
+      email: this.form.querySelector("#email").value,
+      tel: this.form.querySelector("#tel").value,
+      reason: this.form.querySelector("#reason").value,
+    };
     if (!this.form.checkValidity()) {
       this.form.reportValidity();
       return;
     }
     store.state.rows.unshift(data);
-    save_data_row(data)
-    toast("item added successfully" , 2000, "success" );
+    save_data_row(data);
+    toast("item added successfully", 2000, "success");
     this._close();
     this.form.reset();
   }
 
   _on_text_input_change(ev) {
-    const input = ev.target  ;
+    const input = ev.target;
     if (input.value.match(/\d+/g)) {
       input.setCustomValidity("Le message ne doit pas contenir de chiffre");
     } else {
@@ -65,7 +65,7 @@ class Form extends XElement {
     }
   }
   _on_tel_input_change(ev) {
-    const input = ev.target  ;
+    const input = ev.target;
     const value = input.value;
 
     const onlyDigits = /^\d+$/.test(value);
@@ -214,7 +214,6 @@ class Form extends XElement {
               />
             </div>
 
-
             <div class="flex flex-row!  *:w-full gap-x-4">
               <button
                 type="submit"
@@ -280,5 +279,5 @@ class Form extends XElement {
     `;
   }
 }
-define("x-form" , Form)
-export { Form };
+define("x-form", Form);
+export {Form};

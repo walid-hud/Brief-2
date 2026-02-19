@@ -1,19 +1,20 @@
 import { html } from "lit";
 import XElement from "../lib/XElement";
 import { define } from "../lib";
+import { repeat } from "lit/directives/repeat.js";
 
 export default class ToastContainer extends XElement {
   static properties = {
     toasts: { state: true },
   };
-  constructor(){
+  constructor() {
     super()
     this.toasts = []
   }
   toastId = 0;
-  add_toast(message, duration  , variant ) {
+  add_toast(message, duration, variant) {
     const id = this.toastId++;
-    this.toasts = [...this.toasts, { id, message , variant }];
+    this.toasts = [...this.toasts, { id, message, variant }];
     setTimeout(() => this.remove_toast(id), duration);
   }
   remove_toast(id) {
@@ -33,7 +34,10 @@ export default class ToastContainer extends XElement {
         id="toast-container"
         class="fixed  px-4 w-screen h-screen flex items-center flex-col   z-9999 pointer-events-none"
       >
-      ${this.toasts.map(({ id, message , variant }) => {
+      ${repeat(
+      this.toasts,
+      (toast) => toast.od,
+      ({ id, message, variant }) => {
         return html`
             <div
             id=toast-${id}
@@ -62,10 +66,11 @@ export default class ToastContainer extends XElement {
                 </svg>
               </span>
             </div>
-            `;
-        })}
-      </div>
-    `;
+          `
+      }
+    )}
+    </div>
+   `
   }
 }
 

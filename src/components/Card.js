@@ -38,7 +38,7 @@ class Card extends XElement {
         transition-all duration-300 ease-in-out [interpolate-size:allow-keywords]
         grid grid-cols-3 md:grid-cols-7 bg-muted px-2 my-4  md:px-0 md:-my-2
         border border-border md:border-0 md:bg-transparent md:rounded-none  
-        items-center rounded-(--radius) py-2 gap-2 text-sm overflow-hidden
+        items-center rounded-(--radius) py-2 gap-2 text-sm overflow-hidden md:h-fit
         ${this.open ? "h-auto" :"h-16"}
         ${this.exiting && "-translate-x-full opacity-0"}
         "
